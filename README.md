@@ -1,5 +1,5 @@
 # make-it-searchable
-### Removes all special characters from the text in clipboard (which makes it google searchable) and saves it back into clipboard.
+### Removes all special characters from the text in Clipboard (which makes it google searchable) and saves it back into Clipboard.
 
 ## EXE file is at:
 [make-it-searchable / MakeItSearchable / bin / Release / MakeItSearchable.exe](https://github.com/abdulmoizhussain/make-it-searchable/tree/master/MakeItSearchable/bin/Release)
