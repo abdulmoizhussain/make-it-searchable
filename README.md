@@ -10,7 +10,7 @@
 * Execute and minimize `MakeItSearchable.exe`
 * E.g. string: `https://github.com/abdulmoizhussain/make-it-searchable`
 * Prepend the string with "`mis `" like below and select it:
-* ["mis https://github.com/abdulmoizhussain/make-it-searchable"](https://github.com/abdulmoizhussain/make-it-searchable/blob/master/example.png)
+* !["mis https://github.com/abdulmoizhussain/make-it-searchable"](https://github.com/abdulmoizhussain/make-it-searchable/blob/master/example.png)
 * To make it google searchable, copy it in the following way:
 * First press `left-ctrl` key, then press `ctrl + c`
 * Now paste it somewhere and it should be formatted like this: `https github com abdulmoizhussain make it searchable`
