@@ -1,0 +1,5 @@
+c:\users\abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\bin\Release\MakeItSearchable.exe.config
+c:\users\abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\bin\Release\MakeItSearchable.exe
+c:\users\abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\bin\Release\MakeItSearchable.pdb
+c:\users\abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\obj\Release\MakeItSearchable.exe
+c:\users\abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\obj\Release\MakeItSearchable.pdb
