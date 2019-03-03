@@ -4,7 +4,7 @@
 ## EXE file is at:
 [make-it-searchable / MakeItSearchable / bin / Release / MakeItSearchable.exe](https://github.com/abdulmoizhussain/make-it-searchable/tree/master/MakeItSearchable/bin/Release)
 
-### Antiviruses will detect it as a virus, because it is developed with a [key-looger (recorder)](https://en.wikipedia.org/wiki/Keystroke_logging) mechanism but surely does not log (record) any keys, so you can whitelist it.
+### Antiviruses will detect it as a virus, because it is developed with a [key-looger (recorder)](https://en.wikipedia.org/wiki/Keystroke_logging) mechanism but surely does not log (record) any key, so you can whitelist it.
 
 ## Usage:
 * Execute and minimize `MakeItSearchable.exe`
