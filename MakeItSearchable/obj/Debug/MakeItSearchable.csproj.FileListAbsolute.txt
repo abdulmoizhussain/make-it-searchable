@@ -1,1 +1,6 @@
 c:\users\abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\bin\Debug\MakeItSearchable.exe.config
+C:\Users\Abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\bin\Debug\MakeItSearchable.exe
+C:\Users\Abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\bin\Debug\MakeItSearchable.pdb
+C:\Users\Abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\obj\Debug\MakeItSearchable.exe
+C:\Users\Abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\obj\Debug\MakeItSearchable.pdb
+C:\Users\Abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\obj\Debug\MakeItSearchable.csprojResolveAssemblyReference.cache

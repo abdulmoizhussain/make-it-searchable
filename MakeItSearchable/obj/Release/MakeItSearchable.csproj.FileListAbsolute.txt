@@ -3,3 +3,4 @@ c:\users\abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSear
 c:\users\abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\bin\Release\MakeItSearchable.pdb
 c:\users\abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\obj\Release\MakeItSearchable.exe
 c:\users\abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\obj\Release\MakeItSearchable.pdb
+C:\Users\Abdul\documents\visual studio 2015\Projects\MakeItSearchable\MakeItSearchable\obj\Release\MakeItSearchable.csprojResolveAssemblyReference.cache

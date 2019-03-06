@@ -3,6 +3,7 @@ using System.Runtime.InteropServices;
 using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Drawing;
 
 namespace MakeItSearchable
 {
@@ -13,6 +14,8 @@ namespace MakeItSearchable
         private static int WM_KEYUP = 0x0101;
         private static Keys lastKey;
         private static Keys currentKey;
+        private static long cKeyPressTime;
+        private static long lKeyPressTime;
         // WM_KEYDOWN = 0x0100
         // WM_KEYUP = 0x0101
         private static IntPtr hook = IntPtr.Zero;
@@ -21,9 +24,15 @@ namespace MakeItSearchable
         [STAThread]
         static void Main(string[] args)
         {
+            cKeyPressTime = lKeyPressTime = 0;
             hook = SetHook(llkProc);
+            var a = Control.MousePosition.X;
+            var b = Control.MousePosition.Y;
+            a = a;
             Application.Run();
             UnhookWindowsHookEx(hook);
+            //var a = Cursor.Position;
+
         }
         private delegate IntPtr LowLevelKeyboardProc(int nCode, IntPtr wPram, IntPtr IParam);
 
@@ -32,9 +41,22 @@ namespace MakeItSearchable
             if (nCode >= 0 && wPram == (IntPtr)WM_KEYUP)
             {
                 int vkCode = Marshal.ReadInt32(IParam);
+                cKeyPressTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+                lKeyPressTime = cKeyPressTime;
                 lastKey = currentKey;
                 currentKey = (Keys)vkCode;
-                string combination = lastKey.ToString() + currentKey.ToString();
+                string cKey = currentKey.ToString();
+                string lKey = lastKey.ToString();
+                string combination =  lKey + cKey;
+                Regex alphanum = new Regex("[a-zA-Z]");
+                if (cKey.Length == 1 &&
+                    lKey.Length == 1 &&
+                    cKeyPressTime - lKeyPressTime < 222 &&
+                    alphanum.IsMatch(cKey) &&
+                    alphanum.IsMatch(lKey))
+                {
+                    Cursor.Position = (Point)(new PointConverter()).ConvertFromString("0, 0");
+                }
                 if (combination.Equals("LControlKeyC") && Clipboard.ContainsText(TextDataFormat.Text))
                 {
                     string clipboardText = Clipboard.GetText(TextDataFormat.Text);
