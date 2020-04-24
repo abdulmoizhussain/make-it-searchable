@@ -10,25 +10,25 @@ namespace MakeItSearchable
 
     public class Program
     {
-        private static int WM_KEYBOARD_LL = 13;
-        private static int WM_KEYUP = 0x0101;
-        private static Keys lastKey;
-        private static Keys currentKey;
-        private static long cKeyPressTime;
-        private static long lKeyPressTime;
+        private const string LeftControlAnd_C_Key = "LControlKeyC";
+        private static readonly int WM_KEYBOARD_LL = 13;
+        private static readonly int WM_KEYUP = 0x0101;
+        private static Keys LastKey;
+        private static Keys CurrentKey;
+        private static long C_KeyPressTime;
+        private static long L_KeyPressTime;
         // WM_KEYDOWN = 0x0100
         // WM_KEYUP = 0x0101
         private static IntPtr hook = IntPtr.Zero;
-        private static LowLevelKeyboardProc llkProc = HookCallback;
+        private static LowLevelKeyboardProc lowLevelKeyboardProc = HookCallback;
 
         [STAThread]
         static void Main(string[] args)
         {
-            cKeyPressTime = lKeyPressTime = 0;
-            hook = SetHook(llkProc);
+            C_KeyPressTime = L_KeyPressTime = 0;
+            hook = SetHook(lowLevelKeyboardProc);
             var a = Control.MousePosition.X;
             var b = Control.MousePosition.Y;
-            a = a;
             Application.Run();
             UnhookWindowsHookEx(hook);
             //var a = Cursor.Position;
@@ -41,23 +41,23 @@ namespace MakeItSearchable
             if (nCode >= 0 && wPram == (IntPtr)WM_KEYUP)
             {
                 int vkCode = Marshal.ReadInt32(IParam);
-                cKeyPressTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
-                lKeyPressTime = cKeyPressTime;
-                lastKey = currentKey;
-                currentKey = (Keys)vkCode;
-                string cKey = currentKey.ToString();
-                string lKey = lastKey.ToString();
-                string combination =  lKey + cKey;
+                C_KeyPressTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+                L_KeyPressTime = C_KeyPressTime;
+                LastKey = CurrentKey;
+                CurrentKey = (Keys)vkCode;
+                string currentKey = CurrentKey.ToString();
+                string lastKey = LastKey.ToString();
+                string combination = lastKey + currentKey;
                 Regex alphanum = new Regex("[a-zA-Z]");
-                if (cKey.Length == 1 &&
-                    lKey.Length == 1 &&
-                    cKeyPressTime - lKeyPressTime < 222 &&
-                    alphanum.IsMatch(cKey) &&
-                    alphanum.IsMatch(lKey))
+                if (currentKey.Length == 1 &&
+                    lastKey.Length == 1 &&
+                    C_KeyPressTime - L_KeyPressTime < 222 &&
+                    alphanum.IsMatch(currentKey) &&
+                    alphanum.IsMatch(lastKey))
                 {
-                    Cursor.Position = (Point)(new PointConverter()).ConvertFromString("0, 0");
+                    Cursor.Position = (Point)new PointConverter().ConvertFromString("0, 0");
                 }
-                if (combination.Equals("LControlKeyC") && Clipboard.ContainsText(TextDataFormat.Text))
+                if (combination.Equals(LeftControlAnd_C_Key) && Clipboard.ContainsText(TextDataFormat.Text))
                 {
                     string clipboardText = Clipboard.GetText(TextDataFormat.Text);
                     if (clipboardText.IndexOf("mis ") > -1)
@@ -73,11 +73,9 @@ namespace MakeItSearchable
         }
         private static IntPtr SetHook(LowLevelKeyboardProc proc)
         {
-            Process currentProcess = Process.GetCurrentProcess();
-            ProcessModule currentModule = currentProcess.MainModule;
-            string moduleName = currentModule.ModuleName;
+            string moduleName = Process.GetCurrentProcess().MainModule.ModuleName;
             IntPtr moduleHandle = GetModuleHandle(moduleName);
-            return SetWindowsHookEx(WM_KEYBOARD_LL, llkProc, moduleHandle, 0);
+            return SetWindowsHookEx(WM_KEYBOARD_LL, lowLevelKeyboardProc, moduleHandle, 0);
         }
 
         [DllImport("kernel32.dll")]

@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/MakeItSearchable/obj/Debug
+/.vs/MakeItSearchable/v16
+/.vs
+/MakeItSearchable/bin
+/MakeItSearchable/obj
